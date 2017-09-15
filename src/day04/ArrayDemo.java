@@ -5,8 +5,7 @@ public class ArrayDemo {
 
 		//元素类型[] 数组名 = new 元素类型[元素个数或数组长度];
 		int [] array = new int[] {1,2,3,4};
-		System.out.println(array[3]);
-		System.out.println("nihao");
+		System.out.println(array[3]);	
 	}
 	/* JVM虚拟机对内存的划分
 	 * 1，寄存器
@@ -17,7 +16,10 @@ public class ArrayDemo {
 	 * 5，堆内存
 	 * 		存储的数组和对象(其实数组就是对象)凡是new建立的都在堆中
 	 * 特点：
-	 * 1，
+	 * 1，每一个实体都有一个首地址值
+	 * 2，堆内存中的每一个变量都有一个默认的初始化值，根据类型的不同而不同
+	 * 	整数是0，小数0.0或者0.0f boolean false char '\u0000'
+	 * 3，垃圾回收机制
 	 * */
 	
 	//局部代码块。限定局部变量的生命周期

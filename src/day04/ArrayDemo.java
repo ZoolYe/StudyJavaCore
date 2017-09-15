@@ -1,4 +1,4 @@
-package day04;
+//package day04;
 public class ArrayDemo {
 
 	public static void main(String[] args) {
@@ -6,6 +6,7 @@ public class ArrayDemo {
 		//元素类型[] 数组名 = new 元素类型[元素个数或数组长度];
 		int [] array = new int[] {1,2,3,4};
 		System.out.println(array[3]);
+		System.out.println("nihao");
 	}
 	/* JVM虚拟机对内存的划分
 	 * 1，寄存器

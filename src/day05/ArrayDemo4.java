@@ -1,13 +1,17 @@
+import java.util.Arrays;
+
 public class ArrayDemo4{
 
     public static void main(String[] args) {
         int [] arr = new int []{1,4,67,12,44,10,90,91,10};
         //int max = getMax(arr);
         //System.out.println(max);
-        sort(arr);
+        //sort(arr);
         // for(int i=0; i<arr.length; i++){
         //     System.out.println(arr[i]);
         // }
+        //arraySort(arr);
+        Arrays.sort(arr);
         printArray(arr);
     }
 
@@ -17,8 +21,8 @@ public class ArrayDemo4{
         System.out.print("[ ");
         for(int i=0; i<arr.length; i++){
 
-            if(i==arr.length){
-                System.out.println(arr[i]+"]");
+            if(i==arr.length-1){
+                System.out.println(arr[i]+" ]");
             }else{
                 System.out.print(arr[i]+", ");
             }
@@ -26,7 +30,27 @@ public class ArrayDemo4{
 
     }
 
-    //排序数组，按从小到大的顺序排列
+
+    //冒泡排序
+    public static void arraySort(int arr[]){
+
+        for(int i=0; i<arr.length-1; i++){
+
+            for(int x=0; x<arr.length-1-i; x++){
+
+                if(arr[x]>arr[x+1]){
+                    int temp = arr[x];
+                    arr[x] = arr[x+1];
+                    arr[x+1] = temp;
+                }
+
+            }
+
+        }
+
+    }
+
+    //排序数组，按从小到大的顺序排列 选择排序
     public static void sort(int []arr){
 
         for(int i=0; i<arr.length-1; i++){

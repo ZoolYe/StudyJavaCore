@@ -1,2 +1,2 @@
 # StudyJavaCore
-Java学习
+Java Core ѧϰ֮��

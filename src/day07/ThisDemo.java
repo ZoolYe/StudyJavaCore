@@ -1,9 +1,10 @@
 public class ThisDemo{
     public static void main(String[] args) {
         Persion p1 = new Persion("小强",12);
-        Persion p2 = new Persion("旺财",2);
+        Persion p2 = new Persion("旺财",12);
         p1.speak();
         p2.speak();
+        System.out.println(p1.comparAge(p2));
     }
 }
 
@@ -24,6 +25,9 @@ class Persion{
     //年龄
     private int age;
 
+    Persion(){
+    }
+
     Persion(String name){
         this.name = name;
     }
@@ -31,6 +35,14 @@ class Persion{
     Persion(String name, int age){
         this(name);//必须放在构造函数的第一行
         this.age = age;
+    }
+
+    public boolean comparAge(Persion persion){
+        /* if(this.age==persion.age){
+            return true;
+        }
+        return false; */
+        return this.age == persion.age;
     }
 
     void speak(){

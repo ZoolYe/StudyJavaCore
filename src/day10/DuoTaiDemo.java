@@ -6,15 +6,29 @@ public class DuoTaiDemo{
         animalEat(d); */
 
         Animal a = new Cat();//自动类型提升，猫对象提升了动物类型，但是特有功能无法访问  向上转型
-        a.eat();
+        animalEat(a);
 
         //向下转型,向下转型的目的是为了使用子类中的特有方法
         Cat c = (Cat)a;
         c.catchMice();
+
+        Dog d = new Dog();
+        animalEat(d);
+
     }
 
     public static void animalEat(Animal a){
         a.eat();
+
+        //instanceof：通常在向下转型前用于健壮性的判断
+        if(a instanceof Cat){ //instanceof：用于判断对象的具体类型，只能应用于引用数据类型判断
+            Cat c = (Cat)a;
+            c.catchMice();
+        }else if(a instanceof Dog){
+            Dog d = (Dog)a;
+            d.lockHome();
+        }
+        
     }
 
 }

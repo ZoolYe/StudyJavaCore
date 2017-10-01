@@ -1,20 +1,22 @@
 public class ExceptionDemo4{
     public static void main(String[] args){
         int []arr = new int [3];
-        int num = method(arr, -3);
+
+        try{
+            int num = method(arr, -3);
+            System.out.println(num);
+        }catch(FuShuIndexException fu){
+            System.out.println(fu.getMessage());
+            System.out.println(fu);
+            System.out.println("负数角标异常");
+            //jvm默认的异常处理机制就是调用异常对象的这个方法
+            fu.printStackTrace();
+        }
+        
     }
     public static int method(int []arr, int index)throws FuShuIndexException{
-        if(arr == null){
-            throw new NullPointerException("请给定一个不为null的数组");
-        }
-        if(index >= arr.length){
-            throw new ArrayIndexOutOfBoundsException("没有这个元素");
-        }
         if(index < 0){
             throw new FuShuIndexException("数组角标不能为负数");
-        }
-        if(arr == null){
-            throw new NullPointerException("请给定一个不为null的数组");
         }
         return arr[index];
     }

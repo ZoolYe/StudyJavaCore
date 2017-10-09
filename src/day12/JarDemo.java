@@ -1,5 +1,7 @@
 package day12;
 
+//Jar:java的压缩包
+
 public class JarDemo {
 
 	public static void main(String[] args) {
@@ -7,7 +9,3 @@ public class JarDemo {
 	}
 
 }
-/*
- * Jar:java的压缩包
- * 
- * */

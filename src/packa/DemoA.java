@@ -1,8 +1,10 @@
-package day12;
+package packa;
 
-public class DemoA {
+public class DemoA extends DemoB{
 
+	
 	public void show() {
+		method();
 		System.out.println("demo a show");
 	}
 	

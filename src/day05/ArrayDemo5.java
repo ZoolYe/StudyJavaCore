@@ -26,5 +26,4 @@ public class ArrayDemo5{
         }
         return -1;
     }
-
 }

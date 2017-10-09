@@ -102,6 +102,4 @@ public class ArrayDemo4{
                 }
                 return max;
             }
-
-
 }

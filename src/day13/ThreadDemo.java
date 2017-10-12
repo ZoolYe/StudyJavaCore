@@ -22,6 +22,12 @@ public class ThreadDemo {
  * 		因为线程的任务都封装在Runnable接口的子类对象的run方法中，所以要在线程对象创建时就必须明确要
  * 		运行的任务
  * 4，调用线程对象的start方法，并开启线程
+ * 
+ * 实现Runnable接口的好处：
+ * 1，将线程的任务从线程的子类中分离出来，进行了单独的封装
+ * 	按照面向对象的思想将任务封装成对象
+ * 2，避免了Java单继承的局限性
+ * 创建线程的第二种方式较为常用
  * */
 class Demo implements Runnable{
  

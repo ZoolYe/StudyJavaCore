@@ -35,11 +35,11 @@ public class SingleDemo {
 	 public static Single2 getInstance() {
 		 
 		 if(s==null) {
+			 //静态函数使用的锁不是this
 			 synchronized (Single2.class) {
 				if(s==null) {
 				 	s = new Single2();
 				 }
-			 
 			 }
 		 }
 		 return s;

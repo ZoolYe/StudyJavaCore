@@ -6,7 +6,7 @@ class ChuangKouChengXu extends JFrame{
 
     private ChuangKouChengXu(){
         this.setTitle("≥¬ù˜¥Û…µ±∆");
-        this.setBounds(300, 200, 580, 600);
+        this.setBounds(600, 500, 500, 500);
         this.setSize(580,600);
         this.setLocation(300, 200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

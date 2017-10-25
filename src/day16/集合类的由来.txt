@@ -48,4 +48,28 @@ List：特有的常见方法：有一个共性特点，就是都可以操作角标
 	int lastIndexOf(object);
 	List subList(from,to);
 	
+List集合是可以完成对元素的增删改查
+
+List:
+	|--Vector:内部是数组数据结构，是同步的，增删查询，都慢
+	|--ArrayList:内部是数组数据结构，是不同步的，替代了Vector，查询的速度快
+	|--LinkedList:内部链表数据结构，是不同步的，增删元素的速度很快
 	
+LinkedList:
+	addFirst();
+	addLast();
+	jdk1.6
+	offerFirst();
+	offetLast();
+	
+	getFirst();//获取但不移除，如果链表为空，抛出NoSuchElementException
+	getLast();
+	jdk1.6
+	peekFirst();//获取但不移除，如果链表为空，返回null
+	peekLast();
+	
+	removeFirst();//获取并移除，如果链表为空，抛出NoSuchElementException
+	removeLast();
+	jdk1.6
+	pollFirst();//获取并移除，如果链表为空，返回null
+	pollLast();

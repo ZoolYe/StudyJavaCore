@@ -22,5 +22,24 @@ public class Persion {
 		this.age = age;
 	}
 	
+	@Override
+	public int hashCode() {
+		return this.name.hashCode()+age*27;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		if(!(obj instanceof Persion))
+			throw new ClassCastException("¿‡–Õ¥ÌŒÛ");
+		Persion p = (Persion)obj;
+		return this.name.equals(p.name) && this.age == p.age;
+	}
+	@Override
+	public String toString() {
+		return this.name+"  "+this.age;
+	}
+	
+	
 	
 }

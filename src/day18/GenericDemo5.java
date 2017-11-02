@@ -3,7 +3,7 @@ package day18;
 public class GenericDemo5 {
 
 	public static void main(String[] args) {
-		InterImp2<Integer> in2 = new InterImp2();
+		InterImp2<Integer> in2 = new InterImp2<Integer>();
 		in2.show(6);
 	}
 

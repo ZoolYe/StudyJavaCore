@@ -32,6 +32,11 @@ public class Persion implements Comparable<Persion>{
 	}
 
 	@Override
+	public String toString() {
+		return "Persion: "+getName()+"  "+getAge();
+	}
+
+	@Override
 	public int compareTo(Persion p) {
 		//Persion per = p;
 		int temp = this.age - p.age;

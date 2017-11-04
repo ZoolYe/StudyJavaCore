@@ -39,6 +39,12 @@ public class Persion implements Comparable<Persion>{
 	@Override
 	public int compareTo(Persion p) {
 		//Persion per = p;
+		
+		//按姓名进行排序
+		/*int temp = this.name.compareTo(p.name);
+		return temp ==0?this.age - p.age:temp;*/
+		
+		//按年龄进行排序
 		int temp = this.age - p.age;
 		return temp==0?this.name.compareTo(p.name):temp;
 	}

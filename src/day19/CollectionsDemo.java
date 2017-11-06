@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
+
+import day18.ComparByEName;
 
 
 public class CollectionsDemo {
@@ -24,10 +27,55 @@ public class CollectionsDemo {
 		//demo_1(list);
 		//demo_2(list);
 		//Collections.sort(list, new ComparByStrLen());
-		demo_2(list, new ComparByStrLen());
-		System.out.println(list);
+		//demo_2(list, new ComparByStrLen());
+		//System.out.println(list);
+		//demo_2();
+		demo_3();
 	}
 
+	public static void demo_3() {
+		
+		/*TreeSet<String> ts = new TreeSet<String>(new Comparator<String>() {
+
+			@Override
+			public int compare(String o1, String o2) {
+				int temp = o2.compareTo(o1);
+				return temp;
+			}
+		});*/
+		
+		//Collections.reverseOrder()将具备着自然顺序排序的元素进行逆转
+		//TreeSet<String> ts = new TreeSet<String>(Collections.reverseOrder());
+		
+		TreeSet<String> ts = new TreeSet<String>(Collections.reverseOrder(new ComparByStrLen()));
+		ts.add("abc");
+		ts.add("hahaha");
+		ts.add("zzz");
+		ts.add("aa");
+		ts.add("cba");
+		System.out.println(ts);
+	}
+	
+	public static void demo_2() {
+		
+		List<String> list = new ArrayList<String>();
+		list.add("abcde");
+		list.add("cba");
+		list.add("aa");
+		list.add("zzz");
+		list.add("cba");
+		list.add("nba");
+		list.add("z");
+		//Collections.sort(list);
+		System.out.println(list);
+		
+		//int index = Collections.binarySearch(list, "z");
+		//System.out.println(index);
+		
+		String str = Collections.max(list,new ComparByStrLen());
+		System.out.println(str);
+	}
+	
 	public static<T extends Comparable<? super T>> void demo_1(List<T> list) {
 		
 		//对list集合进行指定顺序的排序

@@ -30,7 +30,12 @@ public class CollectionsDemo {
 		//demo_2(list, new ComparByStrLen());
 		//System.out.println(list);
 		//demo_2();
-		demo_3();
+		//demo_3();
+		System.out.println(list);
+		//将集合中的元素全部替换成指定类型元素
+		//Collections.fill(list, "woaini");
+		Collections.shuffle(list);
+		System.out.println(list);
 	}
 
 	public static void demo_3() {

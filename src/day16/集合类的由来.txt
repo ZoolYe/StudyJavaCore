@@ -182,3 +182,42 @@ __________________________________________________________________________
  		|--Properties:用来存储键值对型的配置文件的信息，可以和IO技术相结合
  	|--HashMap：内部结构是哈希表，不是同步的，允许null作为键，允许null作为值
  	|--TreeMap：内部结构是二叉树，不是同步的，可以对Map集合中的键进行排序
+ 	
+ 	
+______________________________________________________________________________
+
+给非同步的集合加锁。
+
+List list = new ArrayList();
+list = MyCollection.synList(list);
+
+class MyCollection{
+	public static List synList(List list){
+		return new MyList(list);
+	}
+	
+	private class MyList{
+	
+		private List list;
+		
+		private static final Object lock = new Object();
+		
+		MyList(List list){
+			this.list = list;
+		}
+		
+		public boolean add(Object obj){
+			synchronized(lock){
+				return list.add(obj);
+			}
+		}
+		
+		public boolean remove(Object obj){
+			synchronized(lock){
+				list.remove(obj);
+			}
+		}
+	}
+	
+}
+

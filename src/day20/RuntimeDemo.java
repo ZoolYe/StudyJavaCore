@@ -14,7 +14,7 @@ public class RuntimeDemo {
 		//r.exec("notepad.exe D:\\ZOOL\\Java\\StudyJavaCore\\src\\day16\\集合类的由来.txt");
 		//r.exec("D:\\PotPlayer\\PotPlayerMini64.exe D:\\TDDOWNLOAD\\JavaSE基础视频20\\IO流\\01-IO流(输入流&输出流).mp4");
 		//r.exec("D:\\Tencent\\QQ\\Bin\\QQScLauncher.exe");
-		Process p = r.exec("mstsc.exe");
+		Process p = r.exec("cmd.exe");
 		
 		Thread.sleep(5000);
 		

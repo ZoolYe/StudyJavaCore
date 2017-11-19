@@ -20,6 +20,7 @@ public class CopyTextTest {
 		while((ch = fr.read())!=-1) {
 			//因为电脑上存储的任何文件都是二进制形式的，之所以能被看到是因为被解析了
 			fw.write(ch);
+			System.out.println(ch);
 		}
 		
 		//关闭资源

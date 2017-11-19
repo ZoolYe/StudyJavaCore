@@ -20,7 +20,7 @@ public class CopyTextTest2 {
 			fw = new FileWriter("k:\\文档\\我操你妈逼的.txt");
 			
 			//创建一个临时容器，用于缓存读取到的字符
-			char []chr = new char[1];
+			char []chr = new char[1024];
 			int len = 0;
 			while((len = fr.read(chr))!=-1) {
 				fw.write(chr,0,len);

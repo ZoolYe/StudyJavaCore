@@ -16,6 +16,15 @@
 
 如果要操作文字数据，优先考虑字符流
 
+//需求：将一些文字存储到硬盘一个文件中。
+记住；如果要操作文字数据，建议优先考虑字符流。
+而且要将数据从内存写到硬盘上，要使用字符流中的输出流。Writer
+硬盘的数据基本体现是文件。 希望找到一个可以操作文件的Writer.
+找到了FileWriter
+
+//需求：读取一个文本文件。将读取到的字符打印到控制台.
+同上，找到了FileReader
+
 字符流缓冲区：
 BufferedWriter
 	:newLine();
@@ -27,4 +36,199 @@ BufferedReader:
 
 装饰和继承都能实现一样的特点：进行功能的扩展增强
 有什么区别：
+
+首先有一个继承体系。
+Writer
+	|--TextWriter:用于操作文本
+	|--MediaWriter：用于操作媒体。
 	
+想要对操作的动作进行效率的提高。
+按照面向对象，可以通过继承对具体的进行功能的扩展。 
+效率提高需要加入缓冲技术。
+	
+Writer
+	|--TextWriter:用于操作文本
+		|--BufferTextWriter:加入了缓冲技术的操作文本的对象。
+	|--MediaWriter：用于操作媒体。
+		|--BufferMediaWriter:
+		
+到这里就哦了。但是这样做好像并不理想。
+如果这个体系进行功能扩展，有多了流对象。
+那么这个流要提高效率，是不是也要产生子类呢？是。这时就会发现只为提高功能，进行的继承，
+导致继承体系越来越臃肿。不够灵活。 
+
+重新思考这个问题？
+既然加入的都是同一种技术--缓冲。
+前一种是让缓冲和具体的对象相结合。 
+可不可以将缓冲进行单独的封装，哪个对象需要缓冲就将哪个对象和缓冲关联。
+
+class Buffer{
+	Buffer(TextWriter w)
+	{}
+	
+	Buffer(MediaWirter w)
+	{
+	
+	}
+}
+class BufferWriter extends Writer{
+	BufferWriter(Writer w)
+	{
+	}
+}
+Writer
+	|--TextWriter:用于操作文本
+	|--MediaWriter：用于操作媒体。
+	|--BufferWriter:用于提高效率。
+	
+装饰比继承灵活。
+
+特点：装饰类和被装饰类都必须所属同一个接口或者父类。 
+
+
+字节流：
+InputStream  
+OutputStream
+
+字节流：
+FileInputStream 
+FileOutputStream
+BufferedInputStream
+BufferedOutputStream
+
+字符流：
+Writer Reader
+FileReader
+FileWriter
+BufferedReader
+BufferedWriter
+
+转换流：
+InputStreamReader:字节到字符的桥梁。解码
+OutputStreamWriter:字符到字节的桥梁。编码
+流的操作规律：
+之所以要弄清楚这个规律是因为流对象太多，开发时不知道用哪个对象适合
+想知道开发时用到哪些对象，只要通过四个明确即可
+1，明确源和目的(汇)
+	源：InputStream Reader
+	目的：OutputStream Writer
+2，明确数据是否是纯文本数据
+	源：是纯文本 ：Reader
+	 	否：InputStream
+	目的：是纯文本 Writer
+		否：OutputStream
+3，明确具体的设备
+	源设备：
+		硬盘：File
+		键盘：System.in
+		内存：数组
+		网络：Socket流
+	目的设备：
+		硬盘：File
+		控制台：System.out
+		内存：数组
+		网络：Socket流
+4，是否需要其他额外功能
+	1，是否需要高效(缓冲区)
+		是，就加上Buffer
+		是，转换
+需求1：复制一个文本文件
+	1，明确源和目的
+	源：InputStream Reader
+	目的：OutputStream Writer
+	2，是否是纯文本？
+		是
+		源：Reader
+		目的：Writer
+	3，明确具体设备
+		源：
+			硬盘：File
+		目的：
+			硬盘：File
+	FileReader fr = new FileReader("FilePtth");
+	FileWriter fw = new  FileWriter("FilePtth");
+	
+	4，需要额外功能吗：
+		需要，需要高效
+		BufferederReader br = new BufferederReader(fr);
+		BufferederWriter bw = new BufferederWriter(fw);
+	
+需求2：读取键盘录入信息，并写入到一个文件中
+	1，明确源和目的
+	源：InputStream Reader
+	目的：OutputStream Writer
+	2，是否是纯文本？
+		是
+		源：Reader
+		目的：Writer
+	3，明确设备
+		源：键盘：System.in
+		目的：硬盘：File
+		InputStream in = System.in
+		FileWriter fw = new FileWriter("b.txt");
+		这样做可以，但是麻烦，将读取的字节数据转成字符串，再由字符流操作
+	4，需要额外功能
+		需要转换：将字节流转成字符流InputStreamReader
+		InputStreamReader isr = new InputStreamReader(System.in);
+		FileWriter fw = new FileWriter("b.txt");
+		还需要功能：高效
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new FileWriter("b.txt")); 
+需求3：将一个文本文件数据显示在控制台上
+	1，明确源和目的
+	源：InputStream Reader
+	目的：OutputStream Writer
+	2，是否是纯文本？
+		是
+		源：Reader
+		目的：Writer
+	3，明确具体设备
+		源：硬盘：File
+		目的：控制台：System.out
+		FileReader fr = new FileReader("b.txt");
+		OutputStream os = System.out;//多态
+	4，需要额外功能
+		需要转换
+		FileReader fr = new FileReader("b.txt");
+		OutputStreamWriter osw = new OutputStreamWriter(System.out);
+		需要高效
+		BuffereReader br = new BuffereReader(new FileReader("b.txt"));
+		BuffereWriter bw = new BuffereWriter(new OutputStreamWriter(System.out));
+需求4：读取键盘录入数据，显示在控制台上
+	1，明确源和目的
+	源：InputStream Reader
+	目的：OutputStream Writer
+	2，是否是纯文本？
+		是
+		源：Reader
+		目的：Writer
+	3，明确具体设备
+		源：键盘：System.in
+		目的：控制台：System.out
+		InputStream is = System.in
+		OutputStream os = System.out
+	4，需要额外功能
+		需要转换，因为都是字节流，但是操作的却是文本数据，所以需要转换成字符流
+		InputStreamReader isr = new InputStreamReader(System.in);
+		OutputStreamWriter osw = new OutputStreamWriter(System.out);
+		为了其高效
+		BuffereReader br = new BuffereReader(new InputStreamReader(System.in));
+		BuffereWriter bw = new BuffereWriter(new OutputStreamWriter(System.out));
+
+需求5：将一个中文字符串数据按照指定的编码表写入到一个文本文件中
+	1，目的 OutputStream Writer
+	2，是纯文本，Writer
+	3，设备：硬盘：File
+	FileWriter fw = new FileWriter("a.txt");
+	fw.write("java");
+	注意：既然需求中已经明确了指定编码表的动作
+	那就不可以使用FileWriter，因为FileWriter内部是用的默认的平台编码表GBK
+	只能使用其父类，OutputStreamWriter
+	OutputStreamWriter接收一个字节输出流对象，既然是操作文件，那么该对象应该是FileOutputStream
+	OutputStreamWriter osw = new OutputStreamWriter(new FileFileOutputStream("a.txt"),"UTF-8");
+	需要高效：
+	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileFileOutputStream("a.txt"),"UTF-8"));
+	
+什么时候使用转换流？
+1，源或者目对应的数据是字节流，但是操作的却是文本数据，可以使用转换流作为桥梁，提高对文本操作的便捷
+2，一旦操作文本涉及到具体的制定编码表时，必须使用转换流

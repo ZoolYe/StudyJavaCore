@@ -17,22 +17,82 @@ public class FileMethodDemo {
 		 * 
 		 * 2，创建与删除
 		 * 	boolean
+		 * 
+		 * 3，判断
+		 * 	
+		 * 4，重命名	
 		 * */
 		//getDemo();
-		createAndDeleteDemo();
+		//createAndDeleteDemo();
+		//isDemo();
+		//renameToDemo();
+		listRootsDemo();
 	}
 
+	public static void listRootsDemo() {
+		
+		File file = new File("D:\\ZOOL\\java");
+		/*System.out.println("getFreeSpace"+file.getFreeSpace());
+		System.out.println("getTotalSpace"+file.getTotalSpace());
+		System.out.println("getUsableSpace"+file.getUsableSpace());*/
+		
+		//获取当前目录下的文件以及文件夹的名称，包含隐藏文件，调用此方法file对象封装的必须是目录，否则会发生空指针异常
+		//如果目录存在但是没有内容，会返回一个数组，但是长度为0
+		String []names = file.list();
+		for(String name : names) {
+			System.out.println(name);
+		}
+		
+		//获取当前系统全部盘符
+		/*File []files = File.listRoots();
+		for(File file : files) {
+			System.out.println(file);
+		}*/
+	}
+	
+	public static void renameToDemo() {
+		File file = new File("C:\\\\Users\\\\ZOOL\\\\Desktop\\\\LenovoHdReport.dir");
+		File file2 = new File("D:\\lenovo.dir");
+		//从命名，移动文件
+		boolean b = file.renameTo(file2);
+		System.out.println(b);
+	}
+	
+	public static void isDemo() {
+		//File file = new File("C:\\Users\\ZOOL\\Desktop\\LenovoHdReport.xt");
+		File file = new File("C:\\Users\\ZOOL\\Desktop\\LenovoHdReport.txt");
+		file.mkdirs();
+		//判断文件是否存在，最好先判断是否存在
+		boolean b = file.exists();
+		boolean b2 = file.isFile();//是否是文件
+		boolean b3 = file.isDirectory();//是否是目录
+		System.out.println(b);
+		System.out.println(b2);
+		System.out.println(b3);
+	}
+	
 	public static void createAndDeleteDemo() throws IOException {
-		File file = new File("C:\\Users\\ZOOL\\Desktop\\abc.exe");
-		/* 创建一个新的文件
+		
+		
+		File dir = new File("C:\\Users\\ZOOL\\Desktop\\zool\\a\\b\\c\\d\\e\\f\\g\\h\\i\\j\\k\\l");
+		//boolean b = dir.mkdir();//创建一个单级目录
+		boolean b = dir.mkdirs();//创建多级目录
+		File file = new File("C:\\\\Users\\\\ZOOL\\\\Desktop\\\\zool\\1.txt");
+		file.createNewFile();
+		//boolean b1 = dir.delete();//
+		//file.delete();
+		//System.out.println(b+" : "+b1);
+		
+		/*File file = new File("C:\\Users\\ZOOL\\Desktop\\abc.exe");
+		 创建一个新的文件
 		 * 和输出流不一样，输出流，文件不存在就创建一个，文件存在就覆盖
 		 * createNewFile文件不存在就创建一个，文件存在就不创建
-		 * */
+		 * 
 		boolean b = file.createNewFile();
 		System.out.println(b);
 		
 		boolean b1 = file.delete();
-		System.out.println(b1);
+		System.out.println(b1);*/
 	}
 
 	public static void getDemo() {

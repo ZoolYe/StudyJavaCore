@@ -1,6 +1,8 @@
 package day22;
 
 import java.io.File;
+import java.io.FileFilter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -26,11 +28,58 @@ public class FileMethodDemo {
 		//createAndDeleteDemo();
 		//isDemo();
 		//renameToDemo();
-		listRootsDemo();
+		//listRootsDemo();
+		//listDemo();
+		//listDemo_2();
+		listDemo_3();
+	}
+
+	public static void listDemo_3() {
+		File dir = new File("D:\\ZOOL\\Java");
+		//SuffxFilter,自定义过滤器
+		File []files = dir.listFiles(new SuffixFilter(".png"));
+		for(File file : files) {
+			System.out.println(file);
+		}
+	}
+
+	public static void listDemo_2() {
+		File dir = new File("C:\\");
+		//获取当前目录下的所有File对象,FileFilter文件过滤器
+		File []files = dir.listFiles(new FileFilter() {
+			
+			@Override
+			public boolean accept(File pathname) {
+				//isHidden文件是否是隐藏文件
+				return !pathname.isHidden();
+			}
+		});
+		
+		for(File file : files) {
+			System.out.println(file);
+		}
+	}
+
+	public static void listDemo() {
+		File file = new File("D:\\ZOOL\\Java");
+		
+		//FilenameFilter文件过滤器
+		String []names = file.list(new FilenameFilter() {
+			
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".java");
+			}
+		});
+		
+		for(String name : names) {
+			System.out.println(name);
+		}
 	}
 
 	public static void listRootsDemo() {
 		
+		//不区分大小写
 		File file = new File("D:\\ZOOL\\java");
 		/*System.out.println("getFreeSpace"+file.getFreeSpace());
 		System.out.println("getTotalSpace"+file.getTotalSpace());

@@ -36,27 +36,40 @@ public class PropertiesTest {
 		
 		//将配置文件封装成File对象
 		File config = new File("C:\\Users\\ZOOL\\Desktop\\config.properties");
+		//如果文件不存在就创建一个
 		if(!config.exists()) {
 			config.createNewFile();
 		}
+		//文件输入字节流，和文件绑定
 		FileInputStream fis = new FileInputStream(config);
+		//创建集合，用于存储文件中的配置信息
 		Properties pro = new Properties();
 		//将文件中的数据加载进集合中
 		pro.load(fis);
 		
 		//通过键获取集合中的值
 		String value = pro.getProperty("time");
+		
+		
+		
 		//定义计数器，记录获取到的次数
 		int count = 0;
+		//如果值不为空，就将值赋值给计数器
 		if(value!=null) {
 			count = Integer.parseInt(value);
+			
+			//如果软件运行超过5次，就退出虚拟机
+			if(count == 5) {
+				System.out.println("软件免费使用期限已到，请注册");
+				System.exit(0);
+			}
 		}
 		count++;
+		//将改变后的次数，重新存储到集合中
 		pro.setProperty("time", Integer.toString(count));
+		//将集合中的数据存储到文件中
 		pro.store(new FileWriter(config),"config file");
-		if(Integer.parseInt(value) == 5) {
-			System.out.println("软件免费使用时间已结束");
-		}
+		
 	}
 
 }

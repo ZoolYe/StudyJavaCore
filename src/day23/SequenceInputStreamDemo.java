@@ -61,6 +61,7 @@ public class SequenceInputStreamDemo {
 		while((len = sis.read(b))!=-1) {
 			//将数组中的数据写入输出流，从0角标开始，上次读取的位置结束
 			fos.write(b,0,len);
+			System.out.println(len);
 		}
 		fos.close();
 		sis.close();

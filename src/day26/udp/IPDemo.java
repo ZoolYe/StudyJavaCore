@@ -1,4 +1,4 @@
-package day26;
+package day26.udp;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

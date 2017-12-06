@@ -1,4 +1,4 @@
-package day26;
+package day26.udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

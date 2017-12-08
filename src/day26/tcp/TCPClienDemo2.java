@@ -22,7 +22,7 @@ public class TCPClienDemo2 {
 		 * */
 		
 		//1，创建TCP客户端socket服务
-		Socket socket = new Socket("192.168.0.101",10002);
+		Socket socket = new Socket("192.168.0.102",10002);
 		
 		//获取socket流中的输出流
 		OutputStream out = socket.getOutputStream();

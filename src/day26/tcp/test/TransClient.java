@@ -1,11 +1,13 @@
 package day26.tcp.test;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -29,39 +31,33 @@ public class TransClient {
 		 * */
 		
 		//1，创建Socket客户端对象
-		Socket s = new Socket("192.168.0.101",6248);
+		Socket s = new Socket("192.168.0.102",6248);
 		//2，获取键盘录入
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
 		//3，Socket输出字节流
-		OutputStream out = s.getOutputStream();
-		//将字节流，转换成字符流
-		OutputStreamWriter osw = new OutputStreamWriter(out);
+		PrintWriter out = new PrintWriter(s.getOutputStream(),true);
 		
 		//4，Socket输入流，读取服务端返回的大写数据
 		InputStream is = s.getInputStream();
 		//将字节流转成字符流
 		InputStreamReader isr = new InputStreamReader(is);
 		//字符读取流缓冲区
-		BufferedReader outbr = new BufferedReader(isr);
+		BufferedReader bufferReader = new BufferedReader(isr);
 		
 		//读取键录入的数据
 		String line = null;
-		while((line = br.readLine())!=null) {
+		while((line = key.readLine())!=null) {
 			if(line.equals("over")) {
 				break;
 			}
-			osw.write(line);
-			osw.flush();
+			out.println(line);
 			
 			//读取服务端返回的大写数据
-			String upperLine = outbr.readLine();
+			String upperLine = bufferReader.readLine();
 			System.out.println(upperLine);
 		}
 		//关闭资源
 		s.close();
-		br.close();
-		osw.close();
-		outbr.close();
 	}
 
 }

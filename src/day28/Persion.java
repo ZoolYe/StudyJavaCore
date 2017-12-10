@@ -21,7 +21,7 @@ public class Persion {
 		super();
 		this.age = age;
 		this.name = name;
-		System.out.println("persion param run"+this.name+" : "+this.age);
+		System.out.println("persion param run  "+this.name+" : "+this.age);
 	}
 	
 	public Persion() {

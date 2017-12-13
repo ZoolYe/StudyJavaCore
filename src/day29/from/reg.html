@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<!-- 
+		get和post提交的区别？
+		1，get提交，提交的信息都显示在地址栏中
+		post提交，提交的信息不显示在地址栏中
+		
+		2，get提交，对于敏感的数据信息不安全
+		post提交，对于敏感信息安全
+		
+		3，get提交，对于大数据不行，因为地址栏存储提价有限
+		post提交，可以提交大体积数据
+		
+		4，get提交，将信息封装到了请求消息的请求行中
+		post提交，将信息封装到了请求体中
+		
+		
+GET /?username=chenmeng&password=sadas&repassword=asdasdas&sex=nv&tech=HTML&country=china HTTP/1.1
+Host: 192.168.0.100:6248
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.8
+
+
+POST / HTTP/1.1
+Host: 192.168.0.100:6248
+Connection: keep-alive
+Content-Length: 83
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+Origin: null
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.8
+
+username=chenmeng&password=asdasd&repassword=adasdas&sex=nv&tech=HTML&country=china
+
+		
+		
+	 -->
+	
+	<form action="http:\\192.168.0.100:6248" method="post">
+		<table border="1" bordercolor="#fcaffg" cellpadding="10" cellspacing=2 width=600>
+			<tr>
+				<th colspan="2">注册表单</th>
+			</tr>
+			<tr>
+				<td>用户名：</td>
+				<td>
+					<input type="text" name="username"/>
+				</td>
+			</tr>
+			<tr>
+				<td>输入密码：</td>
+				<td>
+					<input type="password" name="password"/>
+				</td>
+			</tr>
+			<tr>
+				<td>确认密码：</td>
+				<td>
+					<input type="password" name="repassword"/>
+				</td>
+			</tr>
+			<tr>
+				<td>选择性别：</td>
+				<td>
+					<input type="radio" name="sex" value="nan"/>男
+					<input type="radio" name="sex" value="nv"/>女
+				</td>
+			</tr>
+			<tr>
+				<td>选择技术：</td>
+				<td>
+					<input type="checkbox" name="tech" value="java"/>Java
+					<input type="checkbox" name="tech" value="HTML"/>HTML
+					<input type="checkbox" name="tech" value="CSS"/>CSS
+				</td>
+			</tr>
+			<tr>
+				<td>选择国家：</td>
+				<td>
+					<select name="country">
+						<option value="none">--选择国家--</option>
+						<option value="china">中国</option>
+						<option value="usa">美国</option>
+						<option value="jp">日本</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th colspan="2">
+					<input type="reset" value="清除数据"/>
+					<input type="submit" value="提交数据"/>
+				</th>
+			</tr>
+		</table>
+	</form>
+	
+</body>
+</html>

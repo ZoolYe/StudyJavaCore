@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 
+		如果要给服务器提交数据，表单中的组件必须有name和value属性
+		用于给服务端获取数据方便
+	 -->
+
+	<form action="">
+		用户名：<input type="text" name="username" value="xixi"/><br/>
+		密&nbsp;&nbsp;&nbsp;码：<input type="password" name="password"><br/>
+		性别：&nbsp;<input type="radio" name="sex" value="nan"/>男<input type="radio" name="sex" checked="checked" value="nv"/>女  <br/>
+		选择技术：<input type="checkbox" checked="checked" name="tech" value="java"/>Java
+				<input type="checkbox"name="tech" value="css"/>CSS
+				<input type="checkbox"name="tech" value="html"/>HTML<br/>
+				
+		选择文件：<input type="file" name="file"/><br/>
+		一个图片：<input type="image" src="1.jpg"/><br/>
+		<!-- 数据不需要客户端知道，但是可以将其提交服务器端 -->
+		隐藏组件：<input type="hidden"/><br/>
+		一个按钮：<input type="button" value="按钮啊" onclick="alert('来打我呀')"/><br/>
+		
+		<select name="country">
+			<option value="none">--选择国家--</option>
+			<option value="china" selected="selected">中国</option>
+			<option value="usa">美国</option>
+			<option value="jp">日本</option>
+		</select>
+		<br/>
+		
+		<textarea name="text"></textarea><br/>
+		
+			<input type="submit" value="提交"/>
+			<input type="reset" value="清除"/>
+	</form>
+
+</body>
+</html>

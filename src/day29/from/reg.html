@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!--meta http-equiv="refresh" content="3;url=http:\\www.zoolye.com"/-->
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,6 +21,22 @@
 		4，get提交，将信息封装到了请求消息的请求行中
 		post提交，将信息封装到了请求体中
 		
+		在服务端的一个区别
+		如果出现将中文提交到tomcat服务器，服务器默认用ISO8859-1进行解码，会出现乱码
+		通过ISO8859-1进行编码，再用指定的中文码表解码即可，这种方式对get提交和post提交都有效
+		但是对于post提交方式，提交的中文，还有另一种解决办法，就是直接使用服务端一个对象，request对象的的
+		setCharacterEncoding方法直接设置指定的中文码表，就可以将中文数据解析出来
+		这个方法只对请求体中的数据进行解码
+		综上所述：表单提交，建议使用post
+		
+		和服务端交互的三种方式：
+		1，地址栏输入URL地址 get
+		2，超链接 get
+		3，表单 get post
+		
+		如果在客户端进行了增强型的校验(只要有一个组件内容是错误的，是无法继续提交的，只有全对才可以提交)
+		如果服务端做了增强型校验，客户端还需要吗？
+		需要，因为要提高用户的上网体验效果，减轻服务器端的压力
 		
 GET /?username=chenmeng&password=sadas&repassword=asdasdas&sex=nv&tech=HTML&country=china HTTP/1.1
 Host: 192.168.0.100:6248
@@ -50,7 +67,7 @@ username=chenmeng&password=asdasd&repassword=adasdas&sex=nv&tech=HTML&country=ch
 		
 	 -->
 	
-	<form action="http:\\192.168.0.100:6248" method="post">
+	<form action="http:\\192.168.0.100:6248" method="get">
 		<table border="1" bordercolor="#fcaffg" cellpadding="10" cellspacing=2 width=600>
 			<tr>
 				<th colspan="2">注册表单</th>

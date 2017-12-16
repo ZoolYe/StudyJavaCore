@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<script type="text/javascript">
+		/*
+			JavaScript中的数组
+			数组用于存储更多的数据，是一个容器
+			特点：
+			1，长度是可变的
+			2，元素的类型是任意的
+			建议在使用数组时，存储同一类型的元素，操作起来较为方便
+
+			js中的数组，定义的两种方式：
+			1，var arr = []; var arr = [2,3,1,5,8];
+			2，使用了JavaScript中的Array对象来完成的
+				var arr = new Array(); var arr = [];
+				var arr1 = new Array(5); 数组定义，并长度为5
+				var arr2 = new Array(2,5,7);定义一个数组，元素是2,5,7
+
+		*/
+
+		var arr = [213,1,5,321,3,5,7,0];
+		//document.write(typeof(arr));//对象类型object
+		//document.write(arr.length);
+
+		arr[7] = 12;
+
+		//遍历数组
+		for(var x = 0; x<arr.length; x++){
+			document.write("arr["+x+"] = "+arr[x]+"<br/>");
+		}
+
+	</script>
+
+
+</body>
+</html>

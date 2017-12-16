@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+@import url(table.css);
+</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	document.write("<table>");
+	//在页面中显示一个99乘法表
+	for(var i=1; i<=9; i++){
+		document.write("<tr>");
+		for(var x = 1; x<=i; x++){
+			document.write("<td>");
+			document.write(x+"x"+i+"="+(i*x));
+			document.write("</td>")
+		}
+		document.write("<tr/>");
+	}
+	document.write("</table>");
+</script>
+
+</body>
+</html>

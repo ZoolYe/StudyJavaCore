@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- <script type="text/javascript">
+	/*
+		综合练习：
+		1，定义功能，完成对数组的最值获取
+		2，对数组排序
+		3，对数组查找
+		4，对数组元素反转
+	*/
+
+	//取最值
+	function getMax (arr) {
+		var max = 0;
+		for(var x = 1; x<arr.length; x++){
+			if (arr[x]>arr[max]) {
+				max = arr[x];
+			}
+		}
+		return max;
+	}
+
+	var arr = [20,365,1,205,2,6,9,0,227,364];
+	var max = getMax(arr);
+	//document.write(max);
+
+	//排序
+	function sortArray (arr) {
+		for(var i = 0; i<arr.length-1; i++){
+			for(var x = i+1; x<arr.length; x++){
+				if(arr[x]<arr[i]){
+					var temp = arr[x];
+					arr[x] = arr[i];
+					arr[i] = temp;
+				}
+			}
+		}
+	}
+
+	sortArray(arr);
+
+	for(var c=0; c<arr.length; c++){
+		document.write(arr[c]);
+		document.write("&nbsp");
+	}
+
+</script> -->
+
+
+<script type="text/javascript">
+
+	var arr = [20,365,1,205,2,6,9,0,227,364];
+
+	//对数组进行查找
+	function searchElement(arr,key){
+		for(var i = 0; i<arr.length; i++){
+			if(arr[i]==key){
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	var index = searchElement(arr,364);
+
+	document.write(index);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		//在脚本片段中定义的变量，是全局变量
+		/*for(var x = 0; x<3; x++){
+			document.write(x);
+		}*/
+
+
+		/*function show () {
+			//局部变量
+			var x = 6;
+		}
+
+		document.write(x);*/
+
+		//全局变量x
+		var x = 3;
+
+		function show(x){//函数局部的变量x
+			x = 8;
+		}
+
+		document.write(x);
+
+	</script>
+
+	<script type="text/javascript">
+		//document.write(x);
+	</script>
+
+</body>
+</html>

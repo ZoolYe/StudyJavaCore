@@ -7,6 +7,8 @@
 <body>
 
 <script type="text/javascript" src="out.js"></script>
+<script type="text/javascript" src="stringtools.js"></script>
+
 
 	<script type="text/javascript">
 		/*
@@ -55,10 +57,46 @@
 
 		var s = "    sds a da    ";
 
-		alert(trim(s));
+		//alert(trim(s));
 
-		document.write("abc".bold());
-		
+		// document.write("abc".bold());
+		/*
+			既然trim方法是用来操作字符串的方法，可不可以像字符串已有的方法一样，将该方法也定义到字符串对象中呢？
+			直接用字符串对象调用
+		 */
+
+		/* 
+			这里就可以使用一个该字符串的原型属性来完成
+			原型：就是该对象的一个描述，该描述中如果添加了新功能，那么该对象都会具备这些新功能
+			而prototype就可以获取到这个原型对象
+			通过prototype就可以对对象的功能进行扩展
+
+			需求:想要给string对象添加一个可以去除字符串两端空格的新功能
+			就可以使用原型属性来完成
+		 */
+
+		//给string的原型中添加一个功能。注意：给对象添加新功能，直接使用对象.新内容即可
+		//String.prototype.len = 199;//给string的原型对象中添加了一个属性 名为len，值为199;
+
+		//添加行为
+		/* String.prototype.trim = function(){
+			var start,end;
+			start = 0;
+			end = this.length-1;
+
+			while (start<=end && this.charAt(start)==" ") {
+				start++;
+			}
+
+			while (end>=start && this.charAt(end)==" ") {
+				end--;
+			}
+
+			return this.substring(start,end+1);
+		} */
+
+		println("  hw osh  ".trim()); 
+
 	</script>
 
 </body>

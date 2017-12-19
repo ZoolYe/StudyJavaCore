@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>new Page</title>
+</head>
+<body>
+
+<script type="text/javascript" src="out.js"></script>
+
+	<!-- <script type="text/javascript">
+	
+		var start = new Date().getTime();
+	
+		/*
+			js中的日期：Date对象
+		*/
+		var date = new Date();
+		println(date.toLocaleString());//日期和时间
+		println(date.toLocaleDateString());//只有时间
+	
+		var year = date.getFullYear();
+		var month = date.getMonth();
+		var day = date.getDate();
+		var week = date.getDay();
+	
+		println(year+" "+(month+1)+" "+day+" "+getWeek(week));
+	
+		function getWeek (num) {
+			var weeks = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+			return weeks[num];
+		}
+	
+		var end = new Date().getTime();
+	
+		var times = end - start;
+	
+		println("程序所耗时"+times+"毫秒");
+	
+		/*
+			将日期对象和字符串之间进行转换
+			日期对象转成字符串 toLocaleString()  toLocaleDateString()
+			将字符串转成日期对象。具备指定日期格式的字符串毫秒值日期对象
+		*/
+		var date_str = "9/28/17";
+		//将日期格式的字符串转成日期毫秒值
+		var time2 = Date.parse(date_str);
+		//将日期毫秒值，转换成时间对象
+		var date2 = new Date(time2);
+		println(date2.toLocaleDateString());
+	
+		
+	
+	
+	</script> -->
+
+
+	<script type="text/javascript">
+		/*
+			为了简化对象调用内容的书写，可以使用js中的特有语句，with来完成
+			格式：
+			with(对象){
+				在该区域中可以直接使用指定的对象的内容，不需要写 对象.
+			}
+		*/
+		var date = new Date();
+		
+		/*var year = date.getFullYear();
+		var month = date.getMonth();
+		var day = date.getDate();
+		var week = date.getDay();
+
+		println(year+" "+(month+1)+" "+day+" "+week);*/
+
+		with(date){
+			var year = getFullYear();
+			var month = getMonth();
+			var day = getDate();
+			var week = getDay();
+			println(year+" "+(month+1)+" "+day+" "+week);
+		}
+
+	</script>
+
+</body>
+</html>

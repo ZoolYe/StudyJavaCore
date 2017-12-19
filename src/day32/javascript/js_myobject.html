@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+</head>
+<body>
+
+    <script type="text/javascript" src="out.js"></script>
+
+    <script type="text/javascript">
+        /* 
+            js中的自定义对象
+            如果想要自定义对象，应该先要对对象进行描述
+            js是基于对象的，不是面向对象的，不具备描述事物的能力
+            我们还想按照面向对象的思想编写js
+            就要先描述，在js中，可以用函数来模拟面向对象中的描述
+         */
+
+         //用js来描述人
+         function Persion(){//相当于构造器
+             //alert("persion run");
+         }
+
+         //通过描述，进行对象的建立 new
+         var p = new Persion();
+
+         //动态给p对象添加属性，直接使用p.属性名即可
+         p.name = "张三";
+         p.age = 29;
+         //如果定义的p对象的属性赋值为一个函数，即是给p对象添加一个方法
+         p.show = function () {
+             //alert("show run"+this.name+this.age);
+         }
+
+         //p.show();
+
+    </script>
+
+    <script type="text/javascript">
+
+        function Persion(name,age) {
+            //在给Persion对象添加了两个
+            this.name = name;
+            this.age = age;
+
+            this.setName = function(name){
+                this.name = name;
+            }
+
+            this.getName = function(){
+                return this.name;
+            }
+
+            this.setAge = function(age){
+                this.age = age;
+            }
+
+            this.getAge = function(){
+                return this.age;
+            }
+
+        }
+
+        var p = new Persion("王五",30);
+
+        for(x in p){
+            //println(p[x]);
+        }
+
+        /* println(p.name+" : "+p.age);
+        p.setName("woaini");
+
+        println(p.getName()+" : "+p.getAge()); */
+
+    </script>
+
+<!--     <script type="text/javascript">
+
+        //直接使用{}定义属性和值得键值对方式，键值间通过:连接，键与键之间用,号隔开
+        var pp = {
+            //定义一些成员
+            "name":"小明","age":"38",
+            "getName":function(){
+                return this.name;
+            }
+        }
+
+        //对象调用成员有两种方式：
+        /* println(pp.age+" - "+pp.name);
+        println(pp["age"]+" = "+pp["name"]);
+        println(pp.getName()); */
+
+        var map = {
+            8:"小强",3:"小明",7:"杰森斯坦森郭达"
+        }
+
+        var val1 = getMap(7);
+        println(val1);
+
+        function getMap(key) {
+            return map[key];
+        }
+
+    </script> -->
+
+    <script type="text/javascript">
+        // name = "lisi";
+        // age = 29;
+
+        var myobj = {
+            name:"李四",age:20
+        }
+
+        println(myobj["name"]);
+        println(myobj.name);
+
+        var myobj2 = {
+            "name":"富通天下","time":11
+        }
+
+        println(myobj2.name+" : "+myobj2.time);
+        println(myobj2["name"]+" "+myobj2["time"]);
+
+
+        var myMap = {
+            names:["深圳市载乐科技","杭州新中大软件股份有限公司","北京锤子科技有限公司"],ages:[5,21,7]
+        }
+
+        println(myMap.names[1]);
+
+        var arr2 = {
+            names:[{name1:"name1--",name2:"name2--",name3:"name3--"},{name4:"name4--",name5:"name5--",name6:"name6--"},{name7:"name7--",name8:"name8--",name9:"name9--"}],
+            ages:[{age1:11,age2:12,age3:13},{age4:14,age5:15,age6:16,},{age7:17,age8:18}]
+        }
+
+        println(arr2.names[1].name5);
+
+    </script>
+
+</body>
+</html>

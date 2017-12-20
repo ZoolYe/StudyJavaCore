@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+</head>
+<body>
+    <!-- 
+        演示window中的常见方法
+     -->
+
+     <input type="button" value="演示Window对象中的方法" onclick="windowMethodDemo()"/>
+     <input type="button" value="停止弹窗" onclick="stopTime()"/>
+
+     <script type="text/javascript">
+
+        var timeId;
+
+        function windowMethodDemo() {
+            var b = confirm("启动一个窗口并加载页面");
+            //alert(b);
+            if(b){
+                //open("http://www.zoolye.com");
+                //setTimeout(close,5000);
+                //timeId = setInterval("windowOpen()",100);
+                windowOpen();
+
+            }else{
+                close();
+            }
+
+        }
+
+        function stopTime() {
+            clearInterval(timeId);
+        }
+
+        function windowMove() {
+            //moveBy(1,1);
+            //moveTo(70,70);
+            //resizeBy(-100,-100);
+            moveBy(20,0);
+            moveBy(0,20);
+            moveBy(-20,0);
+            moveBy(0,-20);
+        }
+
+        function windowOpen() {
+            open("http://www.zoolye.com","_blank",
+            "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=600, height=500");
+        }
+
+     </script>
+
+</body>
+</html>

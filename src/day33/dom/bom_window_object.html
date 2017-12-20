@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+</head>
+<body>
+    
+    <script type="text/javascript" src="out.js"></script>
+
+    <!-- 
+        为了演示方便，定义一个事件源，通过对事件源的触发，获取想要的结果
+        比如让用户通过点击按钮就可以知道浏览器的一些信息
+     -->
+
+     <!-- 定义事件源 注册事件关联的动作 -->
+     <input type="button" value="按钮" onclick="windowObjectDemo()"/>
+    
+     <!-- 定义按钮onclick事件的处理方式 -->
+    <script type="text/javascript">
+        //定义一个函数
+        function windowObjectDemo() {
+            //获取浏览器的信息
+            //document.write(navigator.appName+"<br/>");
+            //history.go(-1);
+            var text = location.href;
+            var pro = location.protocol;//获取协议
+            //给location的href属性设置一个值，改变了地址栏的值，并对其值进行了解析，如果是http，还进行连接访问
+            location.href = "http://www.zoolye.com"
+            //println("he");
+        }
+    </script>
+
+
+</body>
+</html>

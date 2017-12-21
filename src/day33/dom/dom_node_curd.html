@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+
+    <style type="text/css">
+        div{
+            border: solid 1px;
+            border-color: brown;
+            width: 200px;
+            height: 30px;
+            margin: 2px;
+        }
+
+        #div_1{
+            background-color:#20B2AA;
+        }
+        #div_2{
+            background-color:#87CEFA;
+        }
+        #div_3{
+            background-color:#FF1493;
+        }
+        #div_4{
+            background-color:#778899;
+        }
+
+        input{
+            background-color:dodgerblue;
+            font-size: 18px;
+            color: antiquewhite;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    
+    <div id="div_1">
+        
+    </div>
+
+    <div id="div_2">
+            好好学习，day day up！
+    </div>
+
+    <div id="div_3">
+        div区域演示文字
+    </div>
+
+    <div id="div_4">
+        节点的增删改查
+    </div>
+
+    <hr/>
+    <input type="button" value="创建并添加节点" onclick="crtAndAdd3()"/>
+    <input type="button" value="删除节点" onclick="delNode()"/>
+    <input type="button" value="修改节点" onclick="updataNode()"/>
+    <input type="button" value="克隆节点" onclick="cloneDemo()"/>
+
+    <script type="text/javascript">
+        //在div_1中 创建并添加一个文本节点
+        function crtAndAdd(){
+            /* 
+                1，创建一个文本节点
+                2，获取div_1节点
+                3，将文本节点添加到div_1节点中
+             */
+            //  创建节点，使用document中的createTextNode方法
+            var oTextNode = document.createTextNode("这是手动创建并添加的文本");
+            // 获取div1节点
+            var oDiv1_Node = document.getElementById("div_1");
+            // 将文本节点添加到div_1节点中
+            oDiv1_Node.appendChild(oTextNode);
+        }
+
+        // div_1中创建并添加一个按钮节点
+        function crtAndAdd2(){
+            // 1，创建一个按钮节点
+            var oButtonNote = document.createElement("input");
+            oButtonNote.type = "button";
+            oButtonNote.value = "手动添加的新按钮";
+
+             // 获取div1节点
+             var oDiv1_Node = document.getElementById("div_1");
+
+            // 将按钮节点添加到div_1节点中
+            oDiv1_Node.appendChild(oButtonNote);
+        }
+
+        // 通过另一种方式添加完成节点
+        function crtAndAdd3() {
+            /* 
+                其实是使用了容器型标签中的一个属性。innerHTML，这个属性可以设置html文本
+             */
+             // 获取div1节点
+             var oDiv1_Node = document.getElementById("div_1");
+            //  oDiv1_Node.innerHTML = "<input type='button' value='hehe'/>";
+             oDiv1_Node.innerHTML = "<a href='https://www.baidu.com'>百度一下</a>";
+        }
+
+        // 将div_2节点删除
+        function delNode() {
+            // 获取div_2节点
+            var oDiv2_Node = document.getElementById("div_2");
+            // 使用div节点的removeNote方法删除 IE 有效
+            //oDiv2_Node.removeNode(oDiv2_Node);
+            //先获取父节点，在通过父节点删除子节点
+            oDiv2_Node.parentNode.removeChild(oDiv2_Node);
+        }
+
+        // 用div_3节点替换div_1节点
+        function updataNode(){
+            /* 
+                获取div_1 和 div_3节点
+                使用replaceNode进行替换
+             */
+             var oDiv1_Node = document.getElementById("div_1");
+             var oDiv3_Node = document.getElementById("div_3");
+             //oDiv1_Node.replaceNode(oDiv3_Node);
+             //建议使用replaceChild方法
+             //先获取父节点，再通过父节点的replaceChild的方法，传入新的节点，和要替换的节点
+             oDiv1_Node.parentNode.replaceChild(oDiv3_Node,oDiv1_Node);
+        }
+
+        /* 
+            用div_3替换div_1，并保留div_3，其实就是对div_3进行克隆
+         */
+        function cloneDemo(){
+            //获取div_1 和 div_3节点
+            var oDiv1_Node = document.getElementById("div_1");
+            var oDiv3_Node = document.getElementById("div_3");
+            //克隆div_3,传入true，并克隆子节点
+            var oCopyDiv_3 = oDiv3_Node.cloneNode(true);
+            //先获取父节点，再通过父节点的replaceChild的方法，传入新的节点，和要替换的节点
+            oDiv1_Node.parentNode.replaceChild(oCopyDiv_3,oDiv1_Node);
+        }
+
+    </script>
+
+
+</body>
+</html>

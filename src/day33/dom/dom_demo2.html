@@ -20,12 +20,17 @@
         3，getElementByTagName()：通过标签名获取节点，因为标签名会重复，所以返回的是一个数组
      -->
 
-     <input type="button" value="演示document对象获取节点" onclick="getNodeDemo3()"/>
+     <input type="button" value="演示document对象获取节点" onclick="getNodeDemo4()"/>
      <input type="text" name="userName"/>
      <div id="div_id">这是一个div区域</div>
-     <a href="http://www.zoolye.com">个人博客1</a>
-     <a href="http://www.zoolye.com">个人博客2</a>
-
+     <a href="https://www.baidu.com">个人博客1</a>
+     <a href="https://www.baidu.com">个人博客2</a>
+     <div id="newslink">
+        <a href="https://www.baidu.com">个人博客2</a>
+        <a href="https://www.baidu.com">个人博客2</a>
+        <a href="https://www.baidu.com">个人博客2</a>
+     </div>
+    
      <script type="text/javascript">
 
         getNodeDemo = function(){
@@ -67,7 +72,27 @@
             for(var x = 0; x<nodes.length; x++){
                 nodes[x].target = "_blank";
             }
+        }
 
+        /* 
+            对于页面中的超连接，新闻链接通过新窗口打开，门户网站连接在当前页面打开
+            当然是要获取其中被操作的超链接对象
+            可是通过document获取的超链接，拿到的是页面中所有的超链接节点对象
+            只想获取一部分，如何操作？
+            只要获取被操作的超链接所属的节点即可
+            再通过这个节点获取到它里面所有的超链接节点
+         */
+
+        function getNodeDemo4() {
+            //获取超链接所属的div节点
+            var divNode = document.getElementById("newslink");
+            //通过对div对象方法的查找发现它也具备getElementsByTagName()方法
+            //记住：所有的容器型标签都具备这个方法，在该标签范围内获取指定名称的标签
+            var aNodes = divNode.getElementsByTagName("a");
+
+            for(var x = 0; x<aNodes.length; x++){
+                aNodes[x].target = "_blank";
+            }
         }
 
      </script>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+
+    <style type="text/css">
+        @import url(table.css);
+    </style>
+
+</head>
+<body>
+    <!-- 
+        在页面中创建一个表格
+        1，事件源，比如按钮
+        2，必须有一个生成的表格节点存储位置
+     -->
+     <script type="text/javascript">
+        function creTab2() {
+            /* 
+                思路：
+                可以通过之前学过的createElement创建元素的形式来完成
+             */
+            //1，创建表格节点
+            var oTabNode = document.createElement("table");
+            
+            //2，创建tBody节点
+            var oTbodyNode = document.createElement("tbody");
+            
+            //3，创建行节点tr
+            var oTrNode = document.createElement("tr");
+            
+            //4，创建单元格节点
+            var oTdNode = document.createElement("td");
+            
+            // oTdNode.innerHTML = "什么鬼啊"; 这行代码无法执行
+
+            //节点之间进行关联，进行指定层次的节点添加
+            oTrNode.appendChild(oTdNode);
+            oTbodyNode.appendChild(oTrNode);
+            oTabNode.appendChild(oTbodyNode);
+
+            document.getElementsByName("div")[0].appendChild(oTabNode);
+        }
+
+        /* 
+            上面的方法很麻烦
+            既然是操作表格，那么最方便的就是使用表格的节点对象来完成
+            表格是由行组成的，表格节点对象中insertRow方法完成了创建并添加的动作
+            行是由单元格所组成，通过tr节点对象的insertCell来完成
+         */
+        function creTab() {
+            //1，创建表格节点
+            var oTabNode = document.createElement("table");
+            //向表格中添加行节点
+            var oTrNode = oTabNode.insertRow();
+            //向行中创建单元格并添加
+            var oTdNode = oTrNode.insertCell();
+            //向单元格中添加数据
+            oTdNode.innerHTML = "添加一个单元格";
+            //将表格节点添加到div中
+            document.getElementsByTagName("div")[0].appendChild(oTabNode);
+        }
+
+        function creTab3() {
+            //1，创建表格节点
+            var oTabNode = document.createElement("table");
+            for(var x=1;x<=5;x++){
+                //向表格中添加行节点
+                var oTrNode = oTabNode.insertRow();
+                for(var i=1; i<=6; i++){
+                    //向行中创建单元格并添加
+                    var oTdNode = oTrNode.insertCell();
+                    //向单元格中添加数据
+                    oTdNode.innerHTML = "第"+x+"行"+i+"列";
+                }
+            }
+            //将表格节点添加到div中
+            document.getElementsByTagName("div")[0].appendChild(oTabNode);
+            //改变按钮的状态
+            document.getElementsByName("creBtn")[0].disabled = true;
+        }
+
+        function creTab4() {
+            //1，创建表格节点
+            var oTabNode = document.createElement("table");
+            oTabNode.id = "tab_id";//给表格添加一个id
+            //获取文本框中的值
+            var rowValue = parseInt(document.getElementsByName("rownum")[0].value);
+            var colValue = parseInt(document.getElementsByName("colnum")[0].value);
+            //alert(rowValue+"  :   "+colValue);
+            for(var x=1;x<=rowValue;x++){
+                //向表格中添加行节点
+                var oTrNode = oTabNode.insertRow();
+                for(var i=1; i<=colValue; i++){
+                    //向行中创建单元格并添加
+                    var oTdNode = oTrNode.insertCell();
+                    //向单元格中添加数据
+                    oTdNode.innerHTML = "第"+x+"行"+i+"列";
+                }
+            }
+            //将表格节点添加到div中
+            document.getElementsByTagName("div")[0].appendChild(oTabNode);
+            //改变按钮的状态
+            document.getElementsByName("creBtn")[0].disabled = true;
+
+            //清空文本框中的数据
+            document.getElementsByName("rownum")[0].value = "";
+            document.getElementsByName("colnum")[0].value = "";
+        }
+
+        function delTab() {
+            //获取表格对象
+            var oTabNode = document.getElementById("tab_id");
+            //判断表格是否存在
+            if(oTabNode == null){
+                alert("请先创建表格");
+            }else{
+                //获取要删除表格的行数
+                var rowValue = parseInt(document.getElementsByName("rownum")[0].value);
+                //获取要删除表格的列数
+                var colValue = parseInt(document.getElementsByName("colnum")[0].value);
+                //要删除的行数必须大于等于1，并且小于等于，表中行的个数
+                if(rowValue>=1 && rowValue<=oTabNode.rows.length){
+                    //删除行，因为是角标所以要减1
+                    oTabNode.deleteRow(rowValue-1);
+                }else{
+                    alert("要删除的行不存在");
+                }
+            }
+            //删除的列数要大于等于1，并且小于等于，行中的列数的长度
+            if(colValue>=1 && colValue<=oTabNode.rows[0].cells.length){
+                //遍历
+                for(var x=0; x<oTabNode.rows.length; x++){
+                    oTabNode.rows[x].deleteCell(colValue-1);
+                 }
+            }else{
+                alert("要删除的列不存在");
+            }
+            //清空文本框中的数据
+            document.getElementsByName("rownum")[0].value = "";
+            document.getElementsByName("colnum")[0].value = "";
+        }
+
+     </script>
+
+     行：<input type="text" name="rownum" />
+     列：<input type="text" name="colnum" />
+     <input type="button" value="创建表格" name="creBtn" onclick="creTab4()"/>
+     <input type="button" value="删除表格" name="delBtn" onclick="delTab()"/>
+     <hr/>
+     <div></div>
+
+</body>
+</html>

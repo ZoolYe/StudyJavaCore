@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+
+    <style type="text/css">
+
+        /* 
+            对表格中的ul样式进行定义
+            1，去除无序列表的样式
+         */
+        table ul{
+            list-style: none;
+            margin: 0px;
+            background-color: dimgrey;
+            display: none;
+            padding: 0px;
+        }
+
+        /* 
+            对表格的框线进行定义，以及单元格的框线进行定义
+         */
+        table{
+            width: 200px;
+            border: solid 1px;
+            border-color: darkgray;
+        }
+
+        table td{
+            border: solid 1px;
+            border-color: darkgray;
+            background-color: hsl(207, 25%, 50%);
+        }
+
+        /* 
+            给a标签设置访问前 和访问后的效果
+         */
+        table td a:link,table td a:visited{
+            color: darkgray;
+            text-decoration: none;
+        }
+
+        table td a:hover{
+            color: azure;
+        }
+
+        /* 
+            预定义一些样式
+         */
+        .open{
+            display: block;
+        }
+
+        .close{
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <script type="text/javascript">
+        //获取被操作的节点ul
+        function show(node) {
+            //先通过事件源超链接标签获取其父节点td，然后再通过父节点获取ul节点
+            var oTdNode = node.parentNode;
+            var oUlNode = oTdNode.getElementsByTagName("ul")[0];
+            //获取表格节点
+            var tabNode = document.getElementById("goodlist");
+            //获取tab表格中的所有ul节点
+            var collUlNode = tabNode.getElementsByTagName("ul");
+            for(var x=0; x<collUlNode.length; x++){
+                if(collUlNode[x] == oUlNode){
+                    if(collUlNode[x].className=="open"){
+                        collUlNode[x].className = "close";
+                    }else{
+                        collUlNode[x].className = "open";
+                    }
+                }else{
+                    collUlNode[x].className = "close";
+                }
+            }
+            
+        }
+
+    </script>
+
+    <!-- 
+        完成一个好友菜单
+        展开闭合效果
+        并且一次只开一个
+     -->
+     <table id="goodlist">
+         <tr>
+             <td>
+                 <a href="javascript:void(0)" onclick="show(this)">好友菜单</a>
+                 <ul>
+                     <li>一个好友</li>
+                     <li>二个好友</li>
+                     <li>三个好友</li>
+                     <li>四个好友</li>
+                     <li>五个好友</li>
+                 </ul>
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 <a href="javascript:void(0)" onclick="show(this)">好友菜单</a>
+                 <ul>
+                     <li>一个好友</li>
+                     <li>二个好友</li>
+                     <li>三个好友</li>
+                     <li>四个好友</li>
+                     <li>五个好友</li>
+                 </ul>
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 <a href="javascript:void(0)" onclick="show(this)">好友菜单</a>
+                 <ul>
+                     <li>一个好友</li>
+                     <li>二个好友</li>
+                     <li>三个好友</li>
+                     <li>四个好友</li>
+                     <li>五个好友</li>
+                 </ul>
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 <a href="javascript:void(0)" onclick="show(this)">好友菜单</a>
+                 <ul>
+                     <li>一个好友</li>
+                     <li>二个好友</li>
+                     <li>三个好友</li>
+                     <li>四个好友</li>
+                     <li>五个好友</li>
+                 </ul>
+             </td>
+         </tr>
+     </table>
+
+</body>
+</html>

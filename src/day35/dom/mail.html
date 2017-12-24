@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <style type="text/css">
+        @import url(table.css);
+        
+        .one{
+            background-color:#E0FFFF;
+        }
+
+        .tow{
+            background-color:#FAFAD2;
+        }
+
+        .over{
+            background-color:#DCDCDC;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <script type="text/javascript">
+        // 行颜色间隔显示
+        function trColor() {
+            // 1，获取表格节点
+            var oTableNode = document.getElementById("mailtable");
+            // 2，通过表节点，获取所有行节点
+            var collTrNode = oTableNode.rows;
+            // 3，对所有需要设置背景的行对象进行遍历
+            for(var x=0; x<collTrNode.length; x++){
+                if(x%2 == 1){
+                    collTrNode[x].className = "one";
+                }else{
+                    collTrNode[x].className = "tow";
+                }
+                var oldClass;
+                collTrNode[x].onmouseover = function(){
+                    oldClass = this.className;
+                    this.className = "over";
+                }
+
+                collTrNode[x].onmouseout = function(){
+                    this.className = oldClass;
+                }
+
+            }
+        }
+
+        //页面的数据都加载完后执行此方法
+        onload = function(){
+            trColor();
+        }
+
+        // 复选框的全选
+        function checkAll(node) {
+            // 获取所有的mailItem复选框
+            var collMailItems = document.getElementsByName("mailItem");
+            for(var x=0; x<collMailItems.length; x++){
+                collMailItems[x].checked = node.checked;
+            }
+        }
+
+        // 定义操作复选框按钮的方法
+        function checkAllByButton(num) {
+            var collMailItems = document.getElementsByName("mailItem");
+            for(var x=0; x<collMailItems.length; x++){
+                if(num>1){
+                    collMailItems[x].checked = !collMailItems[x].checked;
+                }else{
+                    collMailItems[x].checked = num;
+                }
+            }
+        }
+
+        // 删除所选邮件
+        function deleteMail() {
+            
+            if(confirm("是否删除所选邮件？")){
+                    var collMailItems = document.getElementsByName("mailItem");
+                    for(var x=0; x<collMailItems.length; x++){
+                        if(collMailItems[x].checked){
+                            var oTrNode = collMailItems[x].parentNode.parentNode;
+                            oTrNode.parentNode.removeChild(oTrNode);
+                            x--;
+                        }
+                    }
+                    trColor();
+            }
+        }
+
+    </script>
+
+    <table id="mailtable">
+        <tr>
+            <th>
+                <input type="checkbox" onclick="checkAll(this)"/>全选
+            </th>
+            <th>发件人</th>
+            <th>邮件名称</th>
+            <th>邮件附属信息</th>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三11</td>
+            <td>我是邮件11</td>
+            <td>我是邮件附属信息11</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三22</td>
+            <td>我是邮件22</td>
+            <td>我是邮件附属信息22</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三33</td>
+            <td>我是邮件33</td>
+            <td>我是邮件附属信息33</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三44</td>
+            <td>我是邮件44</td>
+            <td>我是邮件附属信息44</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三55</td>
+            <td>我是邮件55</td>
+            <td>我是邮件附属信息55</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三66</td>
+            <td>我是邮件66</td>
+            <td>我是邮件附属信息66</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三77</td>
+            <td>我是邮件77</td>
+            <td>我是邮件附属信息77</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三88</td>
+            <td>我是邮件88</td>
+            <td>我是邮件附属信息88</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三99</td>
+            <td>我是邮件99</td>
+            <td>我是邮件附属信息99</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三100</td>
+            <td>我是邮件100</td>
+            <td>我是邮件附属信息100</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三120</td>
+            <td>我是邮件120</td>
+            <td>我是邮件附属信息120</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="mailItem"/>
+            </td>
+            <td>张三130</td>
+            <td>我是邮件130</td>
+            <td>我是邮件附属信息130</td>
+        </tr>
+
+        <tr>
+                <th>
+                    <input type="checkbox" onclick="checkAll(this)"/>全选
+                </th>
+                <th colspan="3">
+                    <input type="button" value="全选" class="btn" onclick="checkAllByButton(1)"/>
+                    <input type="button" value="取消全选" class="btn" onclick="checkAllByButton(0)"/>
+                    <input type="button" value="反选" class="btn" onclick="checkAllByButton(2)"/>
+                    <input type="button" value="删除所选" class="btn" onclick="deleteMail()"/>
+                </th>
+        </tr>
+
+    </table>
+
+</body>
+</html>

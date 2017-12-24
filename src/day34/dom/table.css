@@ -1,8 +1,21 @@
 table{
     border: 1px solid;
     border-color: rgb(0, 0, 0);
+    width: 500px;
 }
+table th{
+    background-color: cornflowerblue;
+    border: 1px solid;
+    border-color: black;
+}
+
 table td{
+    padding: 10px;
+    border: 1px solid;
+    border-color: black;
+}
+
+table tr{
     border: 1px solid;
     border-color: black;
 }

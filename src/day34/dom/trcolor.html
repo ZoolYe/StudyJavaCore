@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <style type="text/css">
+        @import url(table.css);
+        .one{
+            background-color:cornflowerblue
+        }
+        .tow{
+            background-color:darkgrey;
+        }
+        .highlight{
+            background-color: #FFB6C1;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var oldColor;
+        function trColor() {
+            /* 
+                思路：
+                1，因为要操作行的样式，所以要先获取表格对象
+                2，获取所有被操作的行对象
+                3，遍历行，并给每一行指定样式
+             */
+             //获取表格对象
+             var oTabNode = document.getElementById("info_table");
+             //通过表格对象获取表格中所有的行
+             var collTrNodes = oTabNode.rows;
+             
+            for(var x=0; x<collTrNodes.length;x++){
+                if(x%2==1){
+                    collTrNodes[x].className ="one";
+                }else{
+                    collTrNodes[x].className ="tow";
+                }
+                collTrNodes[x].onmouseover = function(){
+                    oldColor = this.className;
+                    this.className = "highlight";
+                }
+                collTrNodes[x].onmouseout = function(){
+                    this.className = oldColor;
+                }
+
+            }
+        }
+
+        onload = function(){
+            trColor();
+        }
+
+    </script>
+
+</head>
+<body>
+    <table id="info_table">
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>地址</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>27</td>
+            <td>上海</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>30</td>
+            <td>武汉</td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>22</td>
+            <td>北京</td>
+        </tr>
+        <tr>
+            <td>赵六</td>
+            <td>25</td>
+            <td>天津</td>
+        </tr>
+        <tr>
+            <td>赵七</td>
+            <td>33</td>
+            <td>杭州</td>
+        </tr>
+    </table>    
+
+    <!-- <script type="text/javascript">
+        trColor();
+    </script> -->
+
+</body>
+</html>

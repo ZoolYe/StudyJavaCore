@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <style type="text/css">
+        @import url(table.css);
+        a:link,a:visited{
+            color: black;
+            text-decoration: none;
+        }
+        a:hover{
+            color: rgb(78, 78, 78);
+        }
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var falg = true;
+        function sortTable() {
+            /* 
+                思路：
+                1，排序就需要数组。获取需要参与排序的行对象数组
+                2，对行数组中的每一行的年龄单元格的数据进行比较，并完成行对象在数组中的位置置换
+                3，将排好序的数组重新添加回表格
+             */
+             //获取表格节点
+             var oTableNode = document.getElementById("info_table");
+             //获取表格中所有的行
+             var collTrNode = oTableNode.rows;
+             //定义一个临时容器，存储需要排序的行对象
+             var trArr = [];
+             //遍历原行集合，并将需要排序的对象存储到临时容器中
+             for(var x=1;x<collTrNode.length; x++){
+                trArr[x-1] = collTrNode[x];
+             }
+             //对临时容器排序
+             mSort(trArr);
+
+             if(falg){
+                 //将排完序的行对象添加回表格
+                for(var x=0; x<trArr.length; x++){
+                    trArr[x].parentNode.appendChild(trArr[x]);
+                }
+                falg = false;
+             }else{
+                for(var x=trArr.length-1; x>=0; x--){
+                    trArr[x].parentNode.appendChild(trArr[x]);
+                }
+                falg = true;
+             }
+        }
+
+        function mSort(arr) {
+            for(var x=0; x<arr.length; x++){
+                for(var i=x+1; i<arr.length; i++){
+                    if(parseInt(arr[x].cells[1].innerHTML)>parseInt(arr[i].cells[1].innerHTML)){
+                        var temp = arr[x];
+                        arr[x] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+        }
+
+    </script>
+
+    <table id="info_table">
+        <tr>
+            <th>姓名</th>
+            <th>
+                <a href="javascript:void(0)" onclick="sortTable()">年龄</a>
+            </th>
+            <th>地址</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>27</td>
+            <td>上海</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>30</td>
+            <td>武汉</td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>22</td>
+            <td>北京</td>
+        </tr>
+        <tr>
+            <td>赵六</td>
+            <td>25</td>
+            <td>天津</td>
+        </tr>
+        <tr>
+            <td>赵七</td>
+            <td>33</td>
+            <td>杭州</td>
+        </tr>
+    </table>
+</body>
+</html>

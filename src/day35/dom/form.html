@@ -30,7 +30,7 @@
         表单校验
      -->
 
-     <form onsubmit="return false">
+     <form onsubmit="return checkSubmit()" id="userInfo">
 
         <div>
             <img src="./ic_account_circle_black_48dp.png"/>
@@ -43,17 +43,32 @@
 
      </form>
 
+    <!-- 自定义提交按钮 -->
+     <input type="button" value="登录" onclick="mySubmit()"/>
      
      <script type="text/javascript">
         //  处理提交事件
         function checkSubmit() {
-            return false;
+            if(checkUser()){
+                return true;
+            }else{
+                return false;
+            }
         }
+
+
+        function mySubmit() {
+            var oFrom_Node = document.getElementById("userInfo");
+            oFrom_Node.submit();
+        }
+
+
      </script>
 
      <script type="text/javascript">
         // 校验用户名
         function checkUser() {
+            var flag;
             // 定义正则表达式
             var reg = new RegExp("[a-z]{4}","i");
             // var reg = /[a-z]{4}/;
@@ -61,9 +76,12 @@
             var oUserSpan = document.getElementById("userSpan");
             if(!reg.test(oUser.value)){
                 oUserSpan.innerHTML = "你输入的用户名格式不正确，必须4位字母开始".fontcolor("red");
+                flag = false;
             }else{
                 oUserSpan.innerHTML = "<img src='./ic_done_black_48dp.png'/>";
+                flag = true;
             }
+            return flag;
         }
      </script>
 

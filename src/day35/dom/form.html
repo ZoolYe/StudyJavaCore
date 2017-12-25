@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+
+    <style type="text/css">
+        input{
+            width: 250px;
+            height: 30px;
+            margin: 2px;
+        }
+        img{
+            width:20px;
+            height:20px;
+        }
+
+        .btn{
+            width: 60px;
+            height: 30px;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <!-- 
+        表单校验
+     -->
+
+     <form onsubmit="return false">
+
+        <div>
+            <img src="./ic_account_circle_black_48dp.png"/>
+            <input type="text" name="userName" onblur="checkUser()"/>
+            &nbsp;<span id="userSpan"></span><br/>
+            <img src="./ic_https_black_48dp.png"/>
+            <input type="text" name="pasword"/><br/>
+            <input class="btn" type="submit" value="登录"/>
+        </div>
+
+     </form>
+
+     
+     <script type="text/javascript">
+        //  处理提交事件
+        function checkSubmit() {
+            return false;
+        }
+     </script>
+
+     <script type="text/javascript">
+        // 校验用户名
+        function checkUser() {
+            // 定义正则表达式
+            var reg = new RegExp("[a-z]{4}","i");
+            // var reg = /[a-z]{4}/;
+            var oUser = document.getElementsByName("userName")[0];
+            var oUserSpan = document.getElementById("userSpan");
+            if(!reg.test(oUser.value)){
+                oUserSpan.innerHTML = "你输入的用户名格式不正确，必须4位字母开始".fontcolor("red");
+            }else{
+                oUserSpan.innerHTML = "<img src='./ic_done_black_48dp.png'/>";
+            }
+        }
+     </script>
+
+</body>
+</html>

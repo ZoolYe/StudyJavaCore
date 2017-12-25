@@ -11,6 +11,22 @@
         #content_id{
             display:none;
         }
+        h2{
+            text-align: center;
+        }
+
+        .open{
+            display: block;
+        }
+
+        .close{
+            display: none;
+        }
+
+        #no1_ul{
+            list-style: none;
+        }
+
     </style>
 
 </head>
@@ -22,6 +38,57 @@
         2，性格测试
      -->
 
+
+     <!-- 性格测试 -->
+
+     <h2>欢迎你参与性格测试：</h2>
+     <div>
+         <h3>第一题：</h3>
+        <span>你喜欢的水果是什么？</span>
+     <ul id="no1_ul">
+        <li><input type="radio" name="no1" value="1"/>葡萄</li>
+        <li><input type="radio" name="no1" value="2"/>西瓜</li>
+        <li><input type="radio" name="no1" value="3"/>苹果</li>
+        <li><input type="radio" name="no1" value="4"/>芒果</li>
+        <li><input type="radio" name="no1" value="5"/>樱桃</li>
+     </ul>
+
+     </div>
+
+     <div>
+        <input type="button" value="分数：" onclick="showResult()"/>&nbsp;
+        <span id="resultText"></span>
+        <div id="re_div_1" class="close">1-3分：您的性格内向并扭曲，建议...</div> 
+        <div id="re_div_2" class="close">4分以上：你的性格外向并分裂，建议...</div>
+     </div>
+
+
+     <script type="text/javascript">
+
+        function showResult() {
+            var sum = 0;
+            // 判断是否有答案被选中
+            // 获取所有no1的radio，并遍历判断checked的状态
+            var oNo1Nodes = document.getElementsByName("no1");
+            // 遍历所有节点并判断
+            for(var x=0;oNo1Nodes.length; x++){
+                if(oNo1Nodes[x].checked){
+                    sum = oNo1Nodes[x].value;
+                    document.getElementById("resultText").innerHTML = sum;
+                    if(parseInt(sum)<=3){
+                        document.getElementById("re_div_1").className = "open";
+                        document.getElementById("re_div_2").className = "close";
+                    }else{
+                        document.getElementById("re_div_2").className = "open";
+                        document.getElementById("re_div_1").className = "close";
+                    }
+                }
+            }
+        }
+     </script>
+
+
+     <hr/>
      <!-- 问卷调查 -->
      <div>
          你要参与问卷调查吗：

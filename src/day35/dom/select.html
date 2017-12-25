@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+
+    <style type="text/css">
+
+        .colClass {
+            width:50px;
+            height:50px;
+            margin: 5px;
+            float: left;
+        }
+
+        #text_div_id{
+            clear: left;
+            margin: 5px;
+        }
+
+        .minClass{
+            width: 5px;
+            height: 5px;
+        }
+
+        #minF{
+            background-color:#F08080;
+        }
+
+        select{
+            width: 150px;
+            height: 30px;
+        }
+
+        option{
+            color:rgb(0, 0, 0);
+        }
+
+    </style>
+
+</head>
+<body>
+    <!--  -->
+
+    <div id="col_1" class="colClass" style="background-color:#F08080" onclick="setShow(this)"></div>
+    <div id="col_2" class="colClass" style="background-color:#ADD8E6" onclick="setShow(this)"></div>
+    <div id="col_3" class="colClass" style="background-color:#778899" onclick="setShow(this)"></div>
+    <div id="col_4" class="colClass" style="background-color:#FFD700" onclick="setShow(this)"></div>
+
+    <div id="text_div_id">
+        需要显示效果的文字. <br/>
+        需要显示效果的文字. <br/>
+        需要显示效果的文字. <br/>
+        需要显示效果的文字. <br/>
+        需要显示效果的文字. <br/>
+    </div>
+
+    <hr/>
+
+    <select name="selectColor" onchange="changeColor()">
+        <option value="#000000">--选择颜色--</option>
+        <option value="#F08080" style="background-color:#F08080">粉红色</option>
+        <option value="#ADD8E6" style="background-color:#ADD8E6">浅蓝色</option>
+        <option value="#778899" style="background-color:#778899">浅灰色</option>
+        <option value="#FFD700" style="background-color:#FFD700">黄色</option>
+    </select>
+
+    <script type="text/javascript">
+        function changeColor() {
+
+            var oSelectNode = document.getElementsByName("selectColor")[0];
+            
+            // 获取所有的option
+            var collOptionNode = oSelectNode.options;
+            //  selectedIndex 通过Select节点获取option节点被选中的索引位置
+            var col = collOptionNode[oSelectNode.selectedIndex].value;
+            var oText_div_node = document.getElementById("text_div_id");
+            oText_div_node.style.color = col;
+        }
+    </script>
+
+    <script type="text/javascript">
+        function setShow(node) {
+            var oText_div_node = document.getElementById("text_div_id");
+            oText_div_node.style.color = node.style.backgroundColor;
+        }
+    </script>
+
+</body>
+</html>

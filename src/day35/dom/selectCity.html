@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+
+    <style type="text/css">
+        select{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <!--  -->
+
+    <script type="text/javascript">
+        function selectCity() {
+            var collCitys =[["选择城市"],["海淀区","朝阳区","东城区","西城区"],
+                            ["济南","青岛","烟台","威海"],
+                            ["沈阳","大连","鞍山","抚顺"],
+                            ["石家庄","保定","邯郸","廊坊"]];
+            // var collCitys = {"beijing":["海淀区","朝阳区","东城区","西城区"]};
+
+            // 获取两个下拉菜单对象
+            var oSelect1_Node = document.getElementById("select_city1_id");
+            var oSelect2_Node = document.getElementById("select_city2_id");
+            // 获取选择的到底是哪个省市
+            var index = oSelect1_Node.selectedIndex;
+            // 通过角标到容器去获取对应的城市数组
+            var arrCity = collCitys[index];
+            /* // 将之前的子菜单清空
+            for(var x=0; x<oSelect2_Node.options.length;x++){
+                oSelect2_Node.removeChild(oSelect2_Node.options[x]);
+                x--;
+            } */
+            // 清除动作
+            oSelect2_Node.length = 0;
+
+            // 遍历这个数组，并将这个数组的值的元素封装成option对象，添加到子菜单中
+            for(var x=0; x<arrCity.length; x++){
+                // 创建option子菜单
+                var oOptionNode = document.createElement("option");
+                oOptionNode.innerHTML = arrCity[x];
+                oSelect2_Node.appendChild(oOptionNode);
+            }
+        }
+    </script>
+
+    <select id="select_city1_id" onchange="selectCity()">
+        <option value="">--选择省市--</option>
+        <option>北京</option>
+        <option>山东</option>
+        <option>辽宁</option>
+        <option>河北</option>
+    </select>
+    <select id="select_city2_id">
+        <option value="">--选择城市--</option>
+    </select>
+
+</body>
+</html>
